@@ -30,7 +30,12 @@ function listShowing() {
     .orderBy("id");
 }
 
+function read(movie_id) {
+  return knex("movies as m").select("m.*").where({ movie_id });
+}
+
 module.exports = {
   list,
   listShowing,
+  read,
 };
