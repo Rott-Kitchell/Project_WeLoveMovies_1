@@ -1,14 +1,14 @@
 const knex = require("../db/connection");
 
 function list() {
-  return knex("movies as m")
+  return knex("movies")
     .select(
-      "m.movie_id as id",
-      "m.title",
-      "m.runtime_in_minutes",
-      "m.rating",
-      "m.description",
-      "m.image_url"
+      "movie_id as id",
+      "title",
+      "runtime_in_minutes",
+      "rating",
+      "description",
+      "image_url"
     )
     .groupBy("id")
     .orderBy("id");
