@@ -23,9 +23,7 @@ async function update(req, res) {
     ...req.body.data,
     review_id: res.locals.review.review_id,
   };
-  console.log(updatedReview, "updatedReview");
   const newData = await reviewsService.update(updatedReview);
-  console.log(newData, "newData");
   res.json({ data: newData });
 }
 
