@@ -44,13 +44,11 @@ function update(updatedReview) {
             "c.updated_at as c_updated_at"
           )
           .where({ review_id: updatedReview.review_id })
-          .first()
+            .first()
           .then(addCritic)
           .then((data) => data)
       );
     });
-
-  // })
 }
 
 function destroy(review_id) {
