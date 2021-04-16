@@ -31,7 +31,7 @@ function listShowing() {
 }
 
 function read(movie_id) {
-  return knex("movies as m").select("m.*").where({ movie_id });
+  return knex("movies").where({ movie_id });
 }
 
 module.exports = {

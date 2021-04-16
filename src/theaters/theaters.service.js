@@ -16,7 +16,7 @@ function listTheaterByMovie(movie_id) {
 
 function listAllTheaters() {
   return knex("theaters as t")
-    .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")
+    .join("movies_theaters as mt", "t.theater_id", "mt.theater_id")
     .join("movies as m", "mt.movie_id", "m.movie_id")
     .select("*", "m.created_at as m_created_at", "m.updated_at as m_updated_at")
     .orderBy("t.name")
