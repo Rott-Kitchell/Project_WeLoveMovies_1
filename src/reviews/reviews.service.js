@@ -33,21 +33,19 @@ function update(updatedReview) {
     .where({ review_id: updatedReview.review_id })
     .update(updatedReview, "*")
     .then(() => {
-      return (
-        knex("reviews as r")
-          .join("critics as c", "r.critic_id", "c.critic_id")
-          .select(
-            "r.*",
-            "c.*",
-            "c.critic_id as c_critic_id",
-            "c.created_at as c_created_at",
-            "c.updated_at as c_updated_at"
-          )
-          .where({ review_id: updatedReview.review_id })
-            .first()
-          .then(addCritic)
-          .then((data) => data)
-      );
+      return knex("reviews as r")
+        .join("critics as c", "r.critic_id", "c.critic_id")
+        .select(
+          "r.*",
+          "c.*",
+          "c.critic_id as c_critic_id",
+          "c.created_at as c_created_at",
+          "c.updated_at as c_updated_at"
+        )
+        .where({ review_id: updatedReview.review_id })
+        .first()
+        .then(addCritic)
+        .then((data) => data);
     });
 }
 
