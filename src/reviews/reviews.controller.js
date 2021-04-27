@@ -14,6 +14,7 @@ async function reviewExists(req, res, next) {
 
 async function list(req, res, next) {
   const { movie } = res.locals;
+  console.log(movie, "review movie");
   const data = await reviewsService.list(movie[0].movie_id);
   res.json({ data });
 }

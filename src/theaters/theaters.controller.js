@@ -3,6 +3,7 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 async function list(req, res, next) {
   const { movie } = res.locals;
+  console.log(movie, "theater");
   const data = movie
     ? await theatersService.listTheaterByMovie(movie[0].movie_id)
     : await theatersService.listAllTheaters();
