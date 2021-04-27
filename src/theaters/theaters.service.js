@@ -21,10 +21,8 @@ function listAllTheaters() {
     .select("*", "m.created_at as m_created_at", "m.updated_at as m_updated_at")
     .orderBy("t.name")
     .then((data) => {
-      //console.log(data);
       const resultsArray = [];
       data.map((row) => {
-        //console.log(row, "row");
         const movie = {
           movie_id: row.movie_id,
           title: row.title,
