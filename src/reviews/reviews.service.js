@@ -27,6 +27,18 @@ function list(movie_id) {
     });
 }
 
+function listAllReviews() {
+  return knex("reviews as r")
+    .join("critics as c", "r.critic_id", "c.critic_id")
+    .select("r.*", "c.*")
+    .then((data) => {
+      return data.map((set) => {
+        const newSet = addCritic(set);
+        return newSet;
+      });
+    });
+}
+
 function update(updatedReview) {
   return knex("reviews")
     .select("*")
@@ -55,6 +67,7 @@ function destroy(review_id) {
 
 module.exports = {
   list,
+  listAllReviews,
   read,
   update,
   delete: destroy,
